@@ -1,14 +1,14 @@
-FROM alpine:latest
+FROM alpine:3.7
 
 RUN \
-  apk update --no-progress && apk upgrade -v \
+  apk upgrade --no-cache -v \
   && adduser -h /opt -s /sbin/nologin -D -H -g app_daemon app_daemon \
   && apk add --no-cache curl python3 \
-  && pip3 install --no-cache-dir urllib3[secure]
+  && pip3 install --no-cache-dir "urllib3[secure]"
 
 WORKDIR /opt
 
-ADD ./ /opt/
+COPY ./ /opt/
 
 ARG APP_CONFIG_VERSION
 ENV APP_CONFIG_VERSION ${APP_CONFIG_VERSION:-unknown}

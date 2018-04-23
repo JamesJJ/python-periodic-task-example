@@ -1,0 +1,11 @@
+# https://github.com/hadolint/hadolint
+
+# This is an excellent tool for helping improve your Dockerfile
+# As with all things, the default settings may not fit all use cases.
+# 
+ignored:
+  - DL3017  # apk upgrade
+  - DL3005  # apt-get upgrade
+  - DL3018  # specify specific package versions with apk
+  - DL3008  # specify specific package versions with apt
+  - SC2002  # Useless cat [useless but clear!]
